@@ -2,9 +2,14 @@ import { useState } from "react";
 import { dbusers } from "./data.JS";
 
 const WorkingWithApi = () => {
+  // const [view, setView] = useState(true)
   const [gProfileuser] = useState(dbusers);
   const [searchQuery, setSearchQuery] = useState("");
   const [likedIndices, setLikedIndices] = useState([]);
+
+  // const toogleView = () => {
+  //   setView(!view)
+  // }
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -31,6 +36,7 @@ const WorkingWithApi = () => {
 
   return (
     <>
+    <nav className="border-b-[1px] shadow-2xl sticky top-0 z-30 p-5 bg-white">
       <div className="flex justify-center items-center">
         <input
           type="text"
@@ -44,13 +50,10 @@ const WorkingWithApi = () => {
       </div>
 
       {likedIndices.length > 0 && (
-        <div className="mt-3 flex flex-wrap justify-center">
-          <p className="flex items-center justify-center text-white mt-3 mr-[1rem]">
-            LIKED:
-          </p>
+        <div className=" flex flex-wrap">
           {likedIndices.map((index) => (
             <div key={index} className="border rounded-lg w-[7.5rem] flex items-center mr-[1rem]">
-              <p className="text-white px-[1rem]">{filteredUsers[index].login}</p>
+              <p className="text-black px-[1rem]">{filteredUsers[index].login}</p>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +74,9 @@ const WorkingWithApi = () => {
           ))}
         </div>
       )}
+    </nav>
 
-      <div className="flex flex-wrap justify-center items-center">
+      <div className="flex flex-wrap justify-center items-center mt-7">
         {filteredUsers.map((item, index) => (
           <div key={index} className="flex flex-col w-[250px] h-[380px] ml-9">
             <svg
@@ -81,7 +85,7 @@ const WorkingWithApi = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-6 h-6 absolute mt-[1rem] ml-[0.5rem]"
               onClick={() => handleLikeToggle(index)}
             >
               <path
