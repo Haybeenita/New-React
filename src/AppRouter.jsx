@@ -36,6 +36,7 @@ import {
 //   import { Body } from "./components/Body";
   import  Header  from "./Components/Header";
   import Footer from "./Components/Footer"
+  // import {AxiosPageApi} from "./Components/AxiosPageApi";
 
 
   
@@ -79,6 +80,7 @@ import {
     { path: "/salem", element: <Header/> },
     // { path: "/thief/rara", element: <Body/> },
     { path: "/ebere", Component: Footer},
+    // {path: "/miracle", Component : AxiosPageApi}
   ]);
   
   export const RouterProviderApp = () => {
